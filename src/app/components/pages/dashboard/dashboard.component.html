@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  
+
+    <mat-toolbar color="primary">
+      <mat-toolbar-row class="defaultbackcolorth">
+        <span>FeedBack Application</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button [matMenuTriggerFor]="dropdownMenu">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar-row>
+  </mat-toolbar>
+
+<!-- Open nav bar for profile and logout -->
+<mat-menu #dropdownMenu>
+  <a mat-menu-item>
+    <mat-icon>account_circle</mat-icon>
+    <span>{{userid}}</span>
+  </a>
+  <a mat-menu-item href="" (click)=LogOut()>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Logout</span>
+  </a>
+</mat-menu>
+
+<div class="button-container">
+  <button mat-raised-button color="primary" (click)="onCreate()" class="defaultbackcolorth button" > Add Feedback </button>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <table id="customers">
+    <tr>
+      <th class="defaultbackcolorth">Edit</th>
+      <th class="defaultbackcolorth">Delete</th>
+      <!-- <th>id</th> -->
+      <th class="defaultbackcolorth">Learner Name</th>
+      <th class="defaultbackcolorth">Learner Emp Id</th>
+      <th class="defaultbackcolorth">Course Name</th>
+      <th class="defaultbackcolorth">Is content relevant</th>
+      <th class="defaultbackcolorth">Is relevent content hands on</th>
+      <th class="defaultbackcolorth">Proficiency level</th>
+      <th class="defaultbackcolorth">Rating of content</th>
+      <th class="defaultbackcolorth">rating of hands on</th>
+      <th class="defaultbackcolorth">Comments</th>
+    </tr>
+    <tr *ngFor="let feedback of ELEMENT_DATA">
+      <td><button mat-raised-button color="primary" (click)=onEdit(feedback) class="button defaultbackcolorth" > Edit </button></td>
+      <td><button mat-raised-button color="primary" (click)=onDelete(feedback.id) class="button defaultbackcolorth" > Delete </button></td>
+      <!-- <td>1</td> -->
+      <td>{{feedback.learner_name}}</td>
+      <td>{{feedback.learner_emp_id}}</td>
+      <td>{{feedback.course_name}}</td>
+      <td>{{feedback.is_content_relevant}}</td>
+      <td>{{feedback.is_relevant_content_hands_on}}</td>
+      <td>{{feedback.proficiency_level}}</td>
+      <td>{{feedback.rating_of_content}}</td>
+      <td>{{feedback.rating_of_hands_on}}</td>
+      <td>{{feedback.comments}}</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,139 @@
+
+ <div>
+   <mat-card class="mat-elevation-z12">
+     <mat-card-title class='title' style="text-align:center;" >FeedBack Application</mat-card-title>
+     <p class=mat-small style="color:red" *ngIf=invalidUser>{{errorMessage}}</p>
+     <p class=mat-small style="color:green">{{successMessage}}</p>
+     <mat-divider></mat-divider>
+     <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+       <mat-tab label="Sign In">
+           <mat-card-content class="signin">
+             <form action="">
+               <mat-form-field>
+                 <input
+                   matInput
+                   placeholder="Employee Id"
+                   required
+                   name="empid"
+                   ngModel
+                   #email="ngModel"
+                   [(ngModel)]="empid">
+                   <mat-error *ngIf="empid">Employee id required</mat-error>
+                 <mat-icon matSuffix>wmpid</mat-icon>
+               </mat-form-field>
+               <mat-form-field>
+                 <input
+                   matInput
+                   placeholder="Password"
+                   type="password"
+                   required
+                   minlength="6"
+                   name="password"
+                   ngModel
+                   #password="ngModel"
+                   [(ngModel)]="enterPassword">
+                   <mat-error
+                     *ngIf="password.errors && password.errors.required">
+                     Password is required
+                   </mat-error>
+                   <mat-error
+                     *ngIf="password.errors && password.errors.minlength">
+                     Password must be of length 6
+                   </mat-error>
+                 <mat-icon matSuffix>lock</mat-icon>
+               </mat-form-field>
+               <button
+                  mat-raised-button
+                  color="primary"
+                  class="login-button" (click)="SignIn()">
+                  Sign In
+                  </button>
+             </form>
+           </mat-card-content>
+       </mat-tab>
+
+       <!--////////////////////////////////////////////Sigup section////////////////////////////////////////////////////////////////////////////-->
+       <mat-tab label="Sign Up">
+         <mat-card-content class="signup">
+           <form action="">
+             <mat-form-field>
+               <input
+                 matInput
+                 placeholder="Employee Id"
+                 required
+                 name="empid"
+                 ngModel
+                 #username="ngModel"
+                 [(ngModel)]="empid">
+               <mat-icon matSuffix>perm_identity</mat-icon>
+               <mat-error *ngIf="empid">
+                 Employee id is required
+               </mat-error>
+
+             </mat-form-field>
+             <mat-form-field>
+               <input
+                 matInput
+                 placeholder="Employee Name"
+                 required
+                 name="empname"
+                 ngModel
+                 #email="ngModel"
+                 [(ngModel)]="empname">
+                 <mat-error *ngIf="empname">Employee Name is required</mat-error>
+               <mat-icon matSuffix>empname</mat-icon>
+             </mat-form-field>
+             <mat-form-field>
+               <input
+                 matInput
+                 placeholder="Password"
+                 type="password"
+                 required
+                 minlength="6"
+                 name="password"
+                 ngModel
+                 #password="ngModel"
+                 [(ngModel)]="enterPassword">
+                 <mat-error
+                   *ngIf="password.errors && password.errors.required">
+                   Password is required
+                 </mat-error>
+                 <mat-error
+                   *ngIf="password.errors && password.errors.minlength">
+                   Password must be of length 6
+                 </mat-error>
+               <mat-icon matSuffix>lock</mat-icon>
+
+             </mat-form-field>
+             <mat-form-field>
+                 <input
+                 matInput
+                 placeholder="Confirm Password"
+                 type="password"
+                 required
+                 minlength="6"
+                 name="repassword"
+                 ngModel
+                 #repassword="ngModel"
+                 [(ngModel)]="enterRePassword">
+                 <mat-error
+                   *ngIf="repassword.errors && repassword.errors.required">
+                   Re-Enter Password is required
+                 </mat-error>
+               <mat-icon matSuffix>lock</mat-icon>
+             </mat-form-field>
+             <button
+               mat-raised-button
+               color="primary"
+               class="login-button" (click)="SignUp()">
+               Sign Up
+             </button>
+           </form>
+         </mat-card-content>
+       </mat-tab>
+     </mat-tab-group>
+   </mat-card>
+ </div>
+ <div class="container text-center">
+  <router-outlet></router-outlet>
+</div>

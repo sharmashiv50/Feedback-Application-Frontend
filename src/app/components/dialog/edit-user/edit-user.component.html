@@ -1,0 +1,93 @@
+
+ <mat-toolbar color="primary" class="defaultbackcolorth">
+    <span>Edit FeedBack</span>
+  </mat-toolbar>
+<div class="container" mat-dialog-content>
+  <form [formGroup]="addNewFeedBack">
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile>
+          <mat-form-field appearance="outline">
+              <mat-label>Learner Name</mat-label>
+              <input  formControlName="learner_name" [(ngModel)]="data.dataKey.learner_name" matInput [readonly]="true">
+              <div *ngIf="submitted && f.learner_name.errors" class="invalid-feedback">
+                <div *ngIf="f.learner_name.errors.required">Learner Name is Required</div>
+            </div>
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field appearance="outline">
+              <mat-label>Learner EmpId</mat-label>
+              <input  formControlName="learner_emp_id" [(ngModel)]="data.dataKey.learner_emp_id" matInput [readonly]="true">
+              <div *ngIf="submitted && f.learner_emp_id.errors" class="invalid-feedback">
+                <div *ngIf="f.learner_emp_id.errors.required">Learner EmpId is Required</div>
+            </div>
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field appearance="outline">
+              <mat-label>Course Name</mat-label>
+              <input  formControlName="course_name" [(ngModel)]="data.dataKey.course_name" matInput>
+              <div *ngIf="submitted && f.course_name.errors" class="invalid-feedback">
+                <div *ngIf="f.course_name.errors.required">Course Name is Required</div>
+            </div>
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field appearance="outline">
+              <mat-label>Is content relevant</mat-label>
+              <mat-select formControlName="is_content_relevant" [(ngModel)]="data.dataKey.is_content_relevant">
+                <mat-option *ngFor="let selection of yesOrNoselection" value="{{selection}}">{{ selection }}</mat-option> 
+              </mat-select>
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field appearance="outline">
+              <mat-label>Is relevent content hands on</mat-label>
+              <mat-select formControlName="is_relevant_content_hands_on" [(ngModel)]="data.dataKey.is_relevant_content_hands_on">
+                <mat-option *ngFor="let selection of yesOrNoselection" value="{{selection}}">{{ selection }}</mat-option> 
+              </mat-select>
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field appearance="outline">
+              <mat-label>Proficiency level</mat-label>
+              <mat-select formControlName="proficiency_level" [(ngModel)]="data.dataKey.proficiency_level">
+                <mat-option *ngFor="let selection of proficiency" value="{{selection}}">{{ selection }}</mat-option> 
+              </mat-select>
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field appearance="outline">
+              <mat-label>Rating of content</mat-label>
+              <mat-select formControlName="rating_of_content" [(ngModel)]="data.dataKey.rating_of_content">
+                <mat-option *ngFor="let rating of ratingSelection" value="{{rating}}">{{ rating }}</mat-option> 
+              </mat-select>
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field appearance="outline">
+              <mat-label>rating of hands on</mat-label>
+              <mat-select formControlName="rating_of_hands_on" [(ngModel)]="data.dataKey.rating_of_hands_on">
+                <mat-option *ngFor="let rating of ratingSelection" value="{{rating}}">{{ rating }}</mat-option> 
+              </mat-select>
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+            <mat-label>Comments</mat-label>
+            <input  formControlName="comments" [(ngModel)]="data.dataKey.comments" matInput>
+            <div *ngIf="submitted && f.comments.errors" class="invalid-feedback">
+              <div *ngIf="f.comments.errors.required">Comments is Required</div>
+          </div>
+          </mat-form-field>
+    </mat-grid-tile>
+    </mat-grid-list>
+      <div class="float-right" mat-dialog-actions>
+        <div class="button-container">
+          <button  mat-raised-button color="primary" class="defaultbackcolorth" (click)="onSubmit()">Update</button>
+          <!-- <button mat-button mat-dialog-close mat-raised-button color="primary" class="button" (click)="onReset()">Reset</button> -->
+          <button mat-button mat-dialog-close mat-raised-button color="primary" class="button defaultbackcolorth">Close</button>
+          </div>
+      </div>
+    </form>    
+</div>
